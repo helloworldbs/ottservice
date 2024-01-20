@@ -16,7 +16,6 @@ const Layout = () => {
   return (
     <div>
       <Nav />
-
       <Outlet />
     </div>
   )
@@ -39,3 +38,17 @@ function App() {
 
 export default App;
 
+// // params 이용해서 만들예정 
+// movie id 받은 걸 가지고 
+// 해당 영화 데이터 받고 
+// -> 이미지를 보여주게 하겠음 
+
+// useLocation() 
+// localhost:3000/search?q=Papago => ?q=Papago 
+
+// SearchParams
+// ?q=Papago => Papago
+
+// http://localhost:3000/123456 => 123456 (useParams)
+// => 영화 데이터 받고
+// 이미지를 받아 보여줌 

@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './Moviemodal.css';
+import useOnClickOutside from '../Hooks/useOnClickOutside';
+
 
 const Moviemodal = ({
     backdrop_path,
@@ -10,10 +12,16 @@ const Moviemodal = ({
     first_air_date,
     vote_average,
     setModal }) => {
+    
+    const myref = useRef();
+    useOnClickOutside(myref,()=>{
+        setModal(false);
+    });   
+
   return (
     <div className='container' role='presentation'>
         <div className='wrap-modal'>
-            <div className='modal'>
+            <div className='modal' ref={myref}>
                 <span onClick={()=> setModal(false)} className='close'>X</span>
                 <img className='modal_img' 
                     src={`https://image.tmdb.org/t/p/original/${backdrop_path}`}
@@ -33,3 +41,5 @@ const Moviemodal = ({
 }
 
 export default Moviemodal
+
+

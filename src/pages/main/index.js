@@ -10,7 +10,6 @@ import requests from '../../api/request';
 const MainPage = () => {
   return (
     <Container>
-      <Nav />
       <Banner />
       <Category />
       <Row title="이번 주 트렌드" id="TN" fetchUrl={requests.trending}/>

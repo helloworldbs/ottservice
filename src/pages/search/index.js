@@ -15,19 +15,27 @@ const SearchPage = () => {
 
   let query = useQuery();
   const searchTerm = query.get("q");
+
   const debounceSearchTerm = useDebounce(searchTerm, 500);
 
-  useEffect (() => {
-    if(debounceSearchTerm) {
-      fetchSearchmovie(debounceSearchTerm)
+  useEffect(()=>{
+    if(searchTerm){
+      fetchSearchmovie(searchTerm)
     }
-  },[debounceSearchTerm])
+  },[searchTerm])
+
+  // useEffect (() => {
+  //   if(debounceSearchTerm) {
+  //     fetchSearchmovie(debounceSearchTerm)
+  //   }
+  // },[debounceSearchTerm])
 
   const fetchSearchmovie = async (searchTerm) => {
     try{
       const response = await axios.get(`/search/multi?include_adult=false&query=${searchTerm}`);
       setSearchResult(response.data.results);
       console.log('response',response);
+      console.log('searchResult', searchResult);
     } catch(error){
     }
   }
@@ -54,7 +62,7 @@ const SearchPage = () => {
     return (
       <section className='resultno'>
         <div className='resultnotext'>
-          <p>해당 검색어에 일치하는 "{searchTerm}"은(는) 영화에 없습니다.</p>
+          <p>해당 검색어에 일치하는 "{searchTerm}"은(는) 영화 없습니다.</p>
         </div>
       </section>
     )
